@@ -4,13 +4,13 @@ pr: none
 variables:
 - template: ../common/cd-vars-template.yml
   parameters:
-      projectName: parrot
+      projectName: docker-spring-boot
   # define 3 more variables: registryName, registryLogin and registryPassword in the Azure pipeline UI definition
 
 resources: 
   pipelines:
   - pipeline: ci-pipeline
-    source: parrot-ci
+    source: src
     trigger:
       enabled: true
       branches:
@@ -23,7 +23,7 @@ stages:
   jobs:
   - deployment: development
     variables:
-      k8sNamespace: 'phippyandfriends'
+      k8sNamespace: 'helm-deployment'
       # define 5 more variables: aks, rg, aksSpId, aksSpSecret and aksSpTenantId in the Azure pipeline UI definition
     displayName: deploy helm chart into AKS
     pool:
