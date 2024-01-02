@@ -2,7 +2,7 @@ trigger: none
 pr: none
 
 variables:
-- template: ../common/cd-vars-template.yml
+- template: ./common/cd-vars-template.yml
   parameters:
       projectName: docker-spring-boot
   # define 3 more variables: registryName, registryLogin and registryPassword in the Azure pipeline UI definition
@@ -33,4 +33,4 @@ stages:
       runOnce:
         deploy:
           steps:
-          - template: ../common/cd-steps-template.yml
+          - template: ./common/cd-steps-template.yml
